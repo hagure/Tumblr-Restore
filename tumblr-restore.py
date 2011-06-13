@@ -4,7 +4,6 @@ import os
 import sys
 import re
 from lxml import etree
-from lxml import objectify
 
 class BackupParser:
 	def __init__(self,backup_dir):
@@ -34,13 +33,47 @@ class BackupParser:
 	def parse(self):
 		for filename in os.listdir(self.posts_dir):
 			xml_string=self.extract_xml_string(self.posts_dir+"/"+filename)
-			post=etree.fromstring(xml_string)
-			print post.get("id"),post.get("type")
-			for element in post:
-				print "",element.tag
+			postelement=etree.fromstring(xml_string)
+			posttype=postelement.get('type')
+			if posttype == "regular":
+				poster=RegularPoster(postelement)
+				poster.post()
+			else:
+				continue
+			
+			#print postelement.get("id"),postelement.get("type")
+			#for element in postelement.xpath("tag"):
+			#	print "",element.text,element.tag
 			
 
 
+class PosterBase(object):
+	"""Base Class for Post Creating Classes"""
+	def __init__(self,postelement):
+		self.postelement=postelement
+		self.api_base="http://www.tumblr.com/api/write"
+		self.parameters={
+			'group':'wherenow-gruoptest.tumblr.com',
+			'date':postelement.get('date'),
+			'format':postelement.get('format'),
+			'tags':",".join([tag.text for tag in postelement.xpath('tag')]),
+			'send-to-twitter':'no'
+		}
+	
+	def post(self):
+		self.add_specific_parameters()
+		#result=urllib.urlopen(self.api_base,self.parameters).getcode()
+		#print result
+		print self.parameters
+		
+
+class RegularPoster(PosterBase):
+	def __init__(self,postelement):
+		super(RegularPoster,self).__init__(postelement)
+
+	def add_specific_parameters(self):
+		self.parameters['title']=self.postelement.xpath('regular-title').text
+		self.parameters['body']=self.postelement.xpath('regular-body').text
 
 if __name__=="__main__":
 	bp=BackupParser(sys.argv[1])
