@@ -4,16 +4,15 @@ import os
 import sys
 import re
 import urllib
+from optparse import OptionParser
 from lxml import etree
 
-class BackupParser:
-	def __init__(self,backup_dir,email,password):
-		self.backup_dir=backup_dir
-		self.email=email
-		self.password=password
-		if not os.path.exists(backup_dir+"/index.html"):
+class BackupParser(object):
+	def __init__(self,options):
+		self.options=options
+		if not os.path.exists(options.backup_dir+"/index.html"):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
-		self.posts_dir=backup_dir+"/posts"
+		self.posts_dir=options.backup_dir+"/posts"
 
 	def extract_xml_string(self,filename):
 		file = open(filename,'r')
@@ -39,7 +38,7 @@ class BackupParser:
 			postelement=etree.fromstring(xml_string)
 			posttype=postelement.get('type')
 			if posttype == "regular":
-				poster=RegularPoster(postelement,self.email,self.password)
+				poster=RegularPoster(postelement,self.options)
 				poster.post()
 			else:
 				continue
@@ -52,21 +51,25 @@ class BackupParser:
 
 class PosterBase(object):
 	"""Base Class for Post Creating Classes"""
-	def __init__(self,postelement,email,password):
+	def __init__(self,postelement,options):
 		self.postelement=postelement
 		self.api_base="http://www.tumblr.com/api/write"
 		self.parameters={	
-			'email':email,
-			'password':password,
-			'group':'wherenow-grouptest.tumblr.com',
+			'email':options.email,
+			'password':options.password,
 			'date':postelement.get('date'),
 			'format':postelement.get('format'),
 			'tags':",".join([tag.text for tag in postelement.xpath('tag')]),
-			'send-to-twitter':'no'
+			'send-to-twitter':'no',
+			'generator':'github.com/hughsaunders/Tumblr-Restore'
 		}
+		if options.group:
+			self.parameters['group']=options.group
 	
 	def post(self):
 		self.add_specific_parameters()
+		print self.parameters
+
 		result=urllib.urlopen(self.api_base,urllib.urlencode(self.parameters))
 		print result.getcode()
 		for line in result:
@@ -74,16 +77,26 @@ class PosterBase(object):
 		
 
 class RegularPoster(PosterBase):
-	def __init__(self,postelement,email,password):
-		super(RegularPoster,self).__init__(postelement,email,password)
+	def __init__(self,postelement,options):
+		super(RegularPoster,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		title_elements=self.postelement.xpath('regular-title')
 		if len(title_elements) > 0:
-			self.parameters['title']=title_elements[0].text
-		self.parameters['body']=self.postelement.xpath('regular-body')[0].text
+			self.parameters['title']=title_elements[0].text.encode('utf-8')
+		self.parameters['body']=self.postelement.xpath('regular-body')[0].text.encode('utf-8')
+		self.parameters['type']="regular"
 
 if __name__=="__main__":
-	bp=BackupParser(sys.argv[1],sys.argv[2],sys.argv[3])
+	parser=OptionParser()
+	parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
+	parser.add_option("-p","--password",dest="password",help="Tumblr password")
+	parser.add_option("-u","--email",dest="email",help="Tumblr email")
+	parser.add_option("-g","--group",dest="group",help="Tumblr group blog to post to")
+	options,args=parser.parse_args()
+	if not (options.password and options.email and options.backup_dir):
+		parser.print_help()
+		sys.exit(1)
+	bp=BackupParser(options)
 	bp.parse()
 
