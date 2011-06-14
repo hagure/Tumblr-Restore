@@ -11,9 +11,14 @@ from lxml import etree
 class BackupParser(object):
 	def __init__(self,options,tumblog):
 		self.options=options
+		self.tumblog=tumblog
 		if not os.path.exists(options.backup_dir+"/index.html"):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
 		self.posts_dir=options.backup_dir+"/posts"
+		self.post_types={
+			'link':LinkPost
+			,'regular':RegularPost
+		}
 
 	def extract_xml_string(self,filename):
 		file = open(filename,'r')
@@ -38,11 +43,8 @@ class BackupParser(object):
 			xml_string=self.extract_xml_string(self.posts_dir+"/"+filename)
 			postelement=etree.fromstring(xml_string)
 			posttype=postelement.get('type')
-			if posttype == "regular":
-				post=RegularPost(postelement)
-				tumblog.post(post)
-			else:
-				continue
+			if self.post_types.has_key(posttype):
+				self.tumblog.post(self.post_types[posttype](postelement))
 
 class Tumblog(object):
 	def __init__(self,options):
@@ -66,7 +68,6 @@ class Tumblog(object):
 		print "Deleteing",post_id,result
 	
 	def delete_all_posts(self):
-		existing_posts=self.get_existing_posts()
 		for post_id in self.get_existing_posts():
 			self.delete_post(post_id)
 
@@ -93,6 +94,18 @@ class Post(object):
 class RegularPost(Post):
 	def __init__(self,postelement):
 		super(RegularPost,self).__init__(postelement)
+
+	def add_specific_parameters(self):
+		print self.postelement.get("type")
+		title_elements=self.postelement.xpath('regular-title')
+		if len(title_elements) > 0:
+			self.parameters['title']=title_elements[0].text.encode('utf-8')
+		self.parameters['body']=self.postelement.xpath('regular-body')[0].text.encode('utf-8')
+		self.parameters['type']="regular"
+
+class LinkPost(Post):
+	def __init__(self,postelement):
+		super(LinkPost,self).__init__(postelement)
 
 	def add_specific_parameters(self):
 		title_elements=self.postelement.xpath('regular-title')
