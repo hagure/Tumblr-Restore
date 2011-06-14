@@ -103,11 +103,8 @@ class RegularPost(Post):
 		super(RegularPost,self).__init__(postelement)
 
 	def add_specific_parameters(self):
-		print self.postelement.get("type")
-		title_elements=self.postelement.xpath('regular-title')
-		if len(title_elements) > 0:
-			self.parameters['title']=title_elements[0].text.encode('utf-8')
-		self.parameters['body']=self.postelement.xpath('regular-body')[0].text.encode('utf-8')
+		self.add_param('regular-title','title')
+		self.add_param('regular-body','body')
 
 class LinkPost(Post):
 	def __init__(self,postelement):
