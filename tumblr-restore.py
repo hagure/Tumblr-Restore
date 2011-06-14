@@ -73,7 +73,7 @@ class Tumblog(object):
 	def post(self,post):
 		post.add_specific_parameters()
 		post.parameters.update(self.parameters)
-		result=urllib.urlopen(self.options.api_base+'/write',urllib.urlencode(self.parameters))
+		result=urllib.urlopen(self.options.api_base+'/write',urllib.urlencode(post.parameters))
 		print result.getcode()
 		for line in result:
 			print line
@@ -91,8 +91,8 @@ class Post(object):
 
 	
 class RegularPost(Post):
-	def __init__(self,postelement,options):
-		super(RegularPost,self).__init__(postelement,options)
+	def __init__(self,postelement):
+		super(RegularPost,self).__init__(postelement)
 
 	def add_specific_parameters(self):
 		title_elements=self.postelement.xpath('regular-title')
@@ -115,7 +115,6 @@ if __name__=="__main__":
 		sys.exit(1)
 	tumblog=Tumblog(options)
 	if options.delete: tumblog.delete_all_posts()
-	sys.exit(1)
 	bp=BackupParser(options,tumblog)
 	bp.parse()
 
