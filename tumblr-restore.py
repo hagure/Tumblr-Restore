@@ -85,10 +85,17 @@ class Post(object):
 		self.postelement=postelement
 		self.parameters={	
 			'date':postelement.get('date')
-			,'format':postelement.get('format')
-			,'tags':",".join([tag.text for tag in postelement.xpath('tag')])
-			,'send-to-twitter':'no'
+			,'format' : postelement.get('format')
+			,'slug' : postelement.get('slug')
+			,'tags' : ",".join([tag.text for tag in postelement.xpath('tag')])
+			,'type' :  postelement.get('type')
+			,'send-to-twitter' : 'no'
 		}
+
+	def add_param(self,xpath,parameter):
+		elements=self.postelement.xpath(xpath)
+		if len(elements)>0:
+			self.parameters[parameter]=elements[0].text.encode('utf-8')
 
 	
 class RegularPost(Post):
@@ -101,18 +108,15 @@ class RegularPost(Post):
 		if len(title_elements) > 0:
 			self.parameters['title']=title_elements[0].text.encode('utf-8')
 		self.parameters['body']=self.postelement.xpath('regular-body')[0].text.encode('utf-8')
-		self.parameters['type']="regular"
 
 class LinkPost(Post):
 	def __init__(self,postelement):
 		super(LinkPost,self).__init__(postelement)
 
 	def add_specific_parameters(self):
-		title_elements=self.postelement.xpath('regular-title')
-		if len(title_elements) > 0:
-			self.parameters['title']=title_elements[0].text.encode('utf-8')
-		self.parameters['body']=self.postelement.xpath('regular-body')[0].text.encode('utf-8')
-		self.parameters['type']="regular"
+		self.add_param('link-text','name')
+		self.add_param('link-url','url')
+		self.add_param('link-description','description')
 
 if __name__=="__main__":
 	parser=OptionParser()
