@@ -72,7 +72,9 @@ class RegularPoster(PosterBase):
 		super(RegularPoster,self).__init__(postelement)
 
 	def add_specific_parameters(self):
-		#self.parameters['title']=self.postelement.xpath('regular-title')[0].text
+		title_elements=self.postelement.xpath('regular-title')
+		if len(title_elements) > 0:
+			self.parameters['title']=title_elements[0].text
 		self.parameters['body']=self.postelement.xpath('regular-body')[0].text
 
 if __name__=="__main__":
