@@ -18,6 +18,7 @@ class BackupParser(object):
 		self.post_types={
 			'link':LinkPost
 			,'regular':RegularPost
+			#,'photo':PhotoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -114,6 +115,16 @@ class LinkPost(Post):
 		self.add_param('link-text','name')
 		self.add_param('link-url','url')
 		self.add_param('link-description','description')
+
+class PhotoPost(Post):
+	def __init__(self,postelement):
+		super(PhotoPost,self).__init__(postelement)
+
+	def add_specific_parameters(self):
+		self.add_param('photo-caption','caption')
+		self.add_param('photo-link-url','click-through-url')
+		self.add_param('photo-source','source')
+		#source is not enough, have to upload image data :-(
 
 if __name__=="__main__":
 	parser=OptionParser()
