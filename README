@@ -1,2 +1,13 @@
 This is a work-in-progress tumblr import script. 
 The aim is that it will be able to populate a new tumblr blog from a tumblr backup directory (created by the tumblr osx backup utility). 
+
+Progress
+[x] Parse backup
+[x] Delete existing posts
+[x] Create regular posts
+[x] Create link posts
+[-] Create photo posts
+[ ] Create quote posts
+[ ] Create conversation posts
+[ ] Create video posts
+[ ] Create audio posts
