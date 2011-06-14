@@ -4,11 +4,12 @@ import os
 import sys
 import re
 import urllib
+import copy
 from optparse import OptionParser
 from lxml import etree
 
 class BackupParser(object):
-	def __init__(self,options):
+	def __init__(self,options,tumblog):
 		self.options=options
 		if not os.path.exists(options.backup_dir+"/index.html"):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
@@ -38,47 +39,60 @@ class BackupParser(object):
 			postelement=etree.fromstring(xml_string)
 			posttype=postelement.get('type')
 			if posttype == "regular":
-				poster=RegularPoster(postelement,self.options)
-				poster.post()
+				post=RegularPost(postelement)
+				tumblog.post(post)
 			else:
 				continue
-			
-			#print postelement.get("id"),postelement.get("type")
-			#for element in postelement.xpath("tag"):
-			#	print "",element.text,element.tag
-			
 
-
-class PosterBase(object):
-	"""Base Class for Post Creating Classes"""
-	def __init__(self,postelement,options):
-		self.postelement=postelement
-		self.api_base="http://www.tumblr.com/api/write"
-		self.parameters={	
-			'email':options.email,
-			'password':options.password,
-			'date':postelement.get('date'),
-			'format':postelement.get('format'),
-			'tags':",".join([tag.text for tag in postelement.xpath('tag')]),
-			'send-to-twitter':'no',
-			'generator':'github.com/hughsaunders/Tumblr-Restore'
+class Tumblog(object):
+	def __init__(self,options):
+		self.options=options
+		self.parameters={
+			'email':self.options.email
+			,'password':options.password
+			,'generator':'github.com/hughsaunders/Tumblr-Restore'
+			,'group':options.tumblog
 		}
-		if options.group:
-			self.parameters['group']=options.group
 	
-	def post(self):
-		self.add_specific_parameters()
-		print self.parameters
+	def get_existing_posts(self):
+		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read")
+		existing_posts=etree.parse(existing_posts)
+		return [element.get('id') for element in existing_posts.xpath('posts/post')]
 
-		result=urllib.urlopen(self.api_base,urllib.urlencode(self.parameters))
+	def delete_post(self,post_id):
+		local_parameters=copy.copy(self.parameters)
+		local_parameters['post-id']=post_id
+		result = urllib.urlopen(self.options.api_base+'/delete',urllib.urlencode(local_parameters))
+		print "Deleteing",post_id,result
+	
+	def delete_all_posts(self):
+		existing_posts=self.get_existing_posts()
+		for post_id in self.get_existing_posts():
+			self.delete_post(post_id)
+
+	def post(self,post):
+		post.add_specific_parameters()
+		post.parameters.update(self.parameters)
+		result=urllib.urlopen(self.options.api_base+'/write',urllib.urlencode(self.parameters))
 		print result.getcode()
 		for line in result:
 			print line
-		
 
-class RegularPoster(PosterBase):
+class Post(object):
+	"""Base Class for Post Creating Classes"""
+	def __init__(self,postelement):
+		self.postelement=postelement
+		self.parameters={	
+			'date':postelement.get('date')
+			,'format':postelement.get('format')
+			,'tags':",".join([tag.text for tag in postelement.xpath('tag')])
+			,'send-to-twitter':'no'
+		}
+
+	
+class RegularPost(Post):
 	def __init__(self,postelement,options):
-		super(RegularPoster,self).__init__(postelement,options)
+		super(RegularPost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		title_elements=self.postelement.xpath('regular-title')
@@ -92,11 +106,16 @@ if __name__=="__main__":
 	parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
 	parser.add_option("-p","--password",dest="password",help="Tumblr password")
 	parser.add_option("-u","--email",dest="email",help="Tumblr email")
-	parser.add_option("-g","--group",dest="group",help="Tumblr group blog to post to")
+	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on eg foo.tumblr.com")
+	parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
+	parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
 	options,args=parser.parse_args()
-	if not (options.password and options.email and options.backup_dir):
+	if not (options.password and options.email and options.backup_dir and options.tumblog):
 		parser.print_help()
 		sys.exit(1)
-	bp=BackupParser(options)
+	tumblog=Tumblog(options)
+	if options.delete: tumblog.delete_all_posts()
+	sys.exit(1)
+	bp=BackupParser(options,tumblog)
 	bp.parse()
 
