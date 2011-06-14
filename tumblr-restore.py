@@ -3,11 +3,14 @@
 import os
 import sys
 import re
+import urllib
 from lxml import etree
 
 class BackupParser:
-	def __init__(self,backup_dir):
+	def __init__(self,backup_dir,email,password):
 		self.backup_dir=backup_dir
+		self.email=email
+		self.password=password
 		if not os.path.exists(backup_dir+"/index.html"):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
 		self.posts_dir=backup_dir+"/posts"
@@ -36,7 +39,7 @@ class BackupParser:
 			postelement=etree.fromstring(xml_string)
 			posttype=postelement.get('type')
 			if posttype == "regular":
-				poster=RegularPoster(postelement)
+				poster=RegularPoster(postelement,self.email,self.password)
 				poster.post()
 			else:
 				continue
@@ -49,11 +52,13 @@ class BackupParser:
 
 class PosterBase(object):
 	"""Base Class for Post Creating Classes"""
-	def __init__(self,postelement):
+	def __init__(self,postelement,email,password):
 		self.postelement=postelement
 		self.api_base="http://www.tumblr.com/api/write"
-		self.parameters={
-			'group':'wherenow-gruoptest.tumblr.com',
+		self.parameters={	
+			'email':email,
+			'password':password,
+			'group':'wherenow-grouptest.tumblr.com',
 			'date':postelement.get('date'),
 			'format':postelement.get('format'),
 			'tags':",".join([tag.text for tag in postelement.xpath('tag')]),
@@ -62,14 +67,15 @@ class PosterBase(object):
 	
 	def post(self):
 		self.add_specific_parameters()
-		#result=urllib.urlopen(self.api_base,self.parameters).getcode()
-		#print result
-		print self.parameters
+		result=urllib.urlopen(self.api_base,urllib.urlencode(self.parameters))
+		print result.getcode()
+		for line in result:
+			print line
 		
 
 class RegularPoster(PosterBase):
-	def __init__(self,postelement):
-		super(RegularPoster,self).__init__(postelement)
+	def __init__(self,postelement,email,password):
+		super(RegularPoster,self).__init__(postelement,email,password)
 
 	def add_specific_parameters(self):
 		title_elements=self.postelement.xpath('regular-title')
@@ -78,6 +84,6 @@ class RegularPoster(PosterBase):
 		self.parameters['body']=self.postelement.xpath('regular-body')[0].text
 
 if __name__=="__main__":
-	bp=BackupParser(sys.argv[1])
+	bp=BackupParser(sys.argv[1],sys.argv[2],sys.argv[3])
 	bp.parse()
 
