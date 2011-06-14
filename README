@@ -1,0 +1,2 @@
+This is a work-in-progress tumblr import script. 
+The aim is that it will be able to populate a new tumblr blog from a tumblr backup directory (created by the tumblr osx backup utility). 
