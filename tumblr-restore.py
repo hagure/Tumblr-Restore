@@ -62,9 +62,20 @@ class Tumblog(object):
 			,'generator':'github.com/hughsaunders/Tumblr-Restore'
 			,'group':options.tumblog
 		}
+		self.post_chunk=50
 	
 	def get_existing_posts(self):
-		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read")
+		posts=[]
+		while True:
+			print "Getting post chunk starting at",len(posts)
+			chunk=self.get_chunk_of_posts(len(posts))
+			posts+=chunk
+			if len(chunk)<self.post_chunk:
+				break
+		return posts
+			
+	def get_chunk_of_posts(self,start):
+		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read?num="+str(self.post_chunk)+"&start="+str(start))
 		existing_posts=etree.parse(existing_posts)
 		return [element.get('id') for element in existing_posts.xpath('posts/post')]
 
@@ -171,6 +182,14 @@ class QuotePost(Post):
 	def add_specific_parameters(self):
 		self.add_param('quote-text','quote')
 		self.add_param('quote-source','source')
+
+class AudioPost(Post):
+	def __init__(self,postelement):
+		super(AudioPost,self).__init__(postelement)
+
+	def add_specific_parameters(self):
+		self.add_param('','externally-hosted-url')
+		self.add_param('audio-caption','caption')
 
 if __name__=="__main__":
 	parser=OptionParser()
