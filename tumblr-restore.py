@@ -18,6 +18,7 @@ class BackupParser(object):
 		self.post_types={
 			'link':LinkPost
 			,'regular':RegularPost
+			,'quote':QuotePost
 			#,'photo':PhotoPost
 		}
 
@@ -125,6 +126,14 @@ class PhotoPost(Post):
 		self.add_param('photo-link-url','click-through-url')
 		self.add_param('photo-source','source')
 		#source is not enough, have to upload image data :-(
+
+class QuotePost(Post):
+	def __init__(self,postelement):
+		super(QuotePost,self).__init__(postelement)
+
+	def add_specific_parameters(self):
+		self.add_param('quote-text','quote')
+		self.add_param('quote-source','source')
 
 if __name__=="__main__":
 	parser=OptionParser()
