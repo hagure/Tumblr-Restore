@@ -177,10 +177,10 @@ if __name__=="__main__":
 	parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
 	parser.add_option("-p","--password",dest="password",help="Tumblr password")
 	parser.add_option("-u","--email",dest="email",help="Tumblr email")
-	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on eg foo.tumblr.com")
+	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on.",metavar="foo.tumblr.com")
 	parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
 	parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
-	parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/download simultaneously",default=5) #default=10 causes api rate limit errors
+	parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/delete simultaneously. Default=5, 10 causes API rate limit errors for me.",default=5)
 	options,args=parser.parse_args()
 	if not (options.password and options.email and options.backup_dir and options.tumblog):
 		parser.print_help()
