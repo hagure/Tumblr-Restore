@@ -5,6 +5,9 @@ import sys
 import re
 import urllib
 import copy
+import Queue
+import threading
+from threading import Thread
 from optparse import OptionParser
 from lxml import etree
 
@@ -66,11 +69,24 @@ class Tumblog(object):
 		local_parameters=copy.copy(self.parameters)
 		local_parameters['post-id']=post_id
 		result = urllib.urlopen(self.options.api_base+'/delete',urllib.urlencode(local_parameters))
-		print "Deleteing",post_id,result
+		print "Deleteing",post_id
 	
 	def delete_all_posts(self):
+		q=Queue.Queue()
+		def deleter():
+			while True:
+				id=q.get()
+				self.delete_post(id)
+				q.task_done()
+
+		for i in range(self.options.num_threads):
+			t = Thread(target=deleter)
+			t.daemon=True
+			t.start()
+
 		for post_id in self.get_existing_posts():
-			self.delete_post(post_id)
+			q.put(post_id)
+		q.join()
 
 	def post(self,post):
 		post.add_specific_parameters()
@@ -134,6 +150,7 @@ if __name__=="__main__":
 	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on eg foo.tumblr.com")
 	parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
 	parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
+	parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/download simultaneously",default=10)
 	options,args=parser.parse_args()
 	if not (options.password and options.email and options.backup_dir and options.tumblog):
 		parser.print_help()
