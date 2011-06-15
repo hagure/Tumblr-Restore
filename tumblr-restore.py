@@ -67,7 +67,6 @@ class Tumblog(object):
 	def get_existing_posts(self):
 		posts=[]
 		while True:
-			print "Getting post chunk starting at",len(posts)
 			chunk=self.get_chunk_of_posts(len(posts))
 			posts+=chunk
 			if len(chunk)<self.post_chunk:
