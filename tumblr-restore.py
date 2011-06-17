@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 
-import os
-import sys
-import re
-import urllib
-import copy
-import Queue
-import threading
+import os, sys, re
+import urllib, urllib2, cookielib
+import copy, Queue
 from threading import Thread
 from optparse import OptionParser
 from lxml import etree
+from lib import MultipartPostHandler
 
 class BackupParser(object):
 	def __init__(self,options,tumblog):
@@ -123,7 +120,10 @@ class Tumblog(object):
 	def post(self,post):
 		post.add_specific_parameters()
 		post.parameters.update(self.parameters)
-		result=urllib.urlopen(self.options.api_base+'/write',urllib.urlencode(post.parameters))
+		cookies=cookielib.CookieJar()
+		opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cookies),
+				MultipartPostHandler.MultipartPostHandler)
+		result=opener.open(self.options.api_base+'/write',urllib.urlencode(post.parameters))
 		print result.getcode()
 		for line in result:
 			print line
