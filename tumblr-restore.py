@@ -87,21 +87,21 @@ class Tumblog(object):
 			task(item)
 			q.task_done()
 
-	def start_workers(self,q,task)
+	def start_workers(self,q,task):
 		for i in range(self.options.num_threads):
-			thread=Thread(target=worker, args=(self,q,task))
+			thread=Thread(target=self.worker, args=(q,task))
 			thread.start()
 	
 	def delete_all_posts(self):
 		q=Queue.Queue()
-		self.start_workers(self,q,self.delete_post)
+		self.start_workers(q,self.delete_post)
 		for post_id in self.get_existing_posts():
 			q.put(post_id)
 		q.join()
 
 	def post_many(self,posts):
 		q=Queue.Queue()
-		self.start_workers(self,q,self.post)
+		self.start_workers(q,self.post)
 		for post in posts:
 			q.put(post)
 		q.join()
@@ -183,7 +183,7 @@ if __name__=="__main__":
 	parser=OptionParser()
 	parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
 	parser.add_option("-p","--password",dest="password",help="Tumblr password")
-	parser.add_option("-u","--email",dest="email",help="Tumblr email")
+	parser.add_option("-e","--email",dest="email",help="Tumblr email")
 	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on.",metavar="foo.tumblr.com")
 	parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
 	parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
