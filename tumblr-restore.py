@@ -80,41 +80,30 @@ class Tumblog(object):
 		local_parameters['post-id']=post_id
 		result = urllib.urlopen(self.options.api_base+'/delete',urllib.urlencode(local_parameters))
 		print "Deleteing",post_id
+
+	def worker(self,q,task):
+		while True:
+			item=q.get()
+			task(item)
+			q.task_done()
+
+	def start_workers(self,q,task)
+		for i in range(self.options.num_threads):
+			thread=Thread(target=worker, args=(self,q,task))
+			thread.start()
 	
 	def delete_all_posts(self):
 		q=Queue.Queue()
-		def deleter():
-			while True:
-				id=q.get()
-				self.delete_post(id)
-				q.task_done()
-
-		for i in range(self.options.num_threads):
-			t = Thread(target=deleter)
-			t.daemon=True
-			t.start()
-
+		self.start_workers(self,q,self.delete_post)
 		for post_id in self.get_existing_posts():
 			q.put(post_id)
-
 		q.join()
 
 	def post_many(self,posts):
 		q=Queue.Queue()
-		def poster():
-			while True:
-				post=q.get()
-				self.post(post)
-				q.task_done()
-
-		for i in range(self.options.num_threads):
-			t = Thread(target=poster)
-			t.daemon=True
-			t.start()
-
+		self.start_workers(self,q,self.post)
 		for post in posts:
 			q.put(post)
-
 		q.join()
 
 	def post(self,post):
