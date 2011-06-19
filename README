@@ -1,5 +1,6 @@
-This is a work-in-progress tumblr import script. 
-The aim is that it will be able to populate a new tumblr blog from a tumblr backup directory (created by the tumblr osx backup utility). 
+Tumblr Restore
+======================
+A python script to restore a tumblr backup (from the osx tumblr backup utility) to a tumblr blog. It optionally deletes all existing posts, before uploading the backed up posts. 
 
 Requirements:
 LXML
