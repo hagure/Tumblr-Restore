@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os, sys, re, random
+import os, sys, re, random, glob
 import urllib, urllib2, cookielib
 import copy, Queue
 from threading import Thread
@@ -18,8 +18,8 @@ class BackupParser(object):
 		self.post_types={
 			#'link':LinkPost
 			#,'regular':RegularPost
-			#,'quote':QuotePost
-			#'photo':PhotoPost
+			#'quote':QuotePost
+			'photo':PhotoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -114,7 +114,7 @@ class Tumblog(object):
 		cookies=cookielib.CookieJar()
 		opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cookies),
 				MultipartPostHandler.MultipartPostHandler)
-		result=opener.open(self.options.api_base+'/write',urllib.urlencode(post.parameters))
+		result=opener.open(self.options.api_base+'/write',(post.parameters))
 		print "Post Creation Result",result.getcode()
 		for line in result:
 			print line
@@ -168,10 +168,8 @@ class PhotoPost(Post):
 	def add_specific_parameters(self):
 		self.add_param('photo-caption','caption')
 		self.add_param('photo-link-url','click-through-url')
-		#self.add_param('photo-source','source')
-		for photo_element in self.postelement.xpath('photo-url[@max-width="1280"]'):
-			self.photos.append(self.download_file(photo_element.text))
-		self.parameters['data']=self.photos[0]
+		postid=self.postelement.get('id')
+		self.parameters['data']=open(glob.glob(self.options.backup_dir+'/images/'+postid+'*')[0],'r').read()
 		
 
 class QuotePost(Post):
