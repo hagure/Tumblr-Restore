@@ -21,7 +21,8 @@ class BackupParser(object):
 			#'quote':QuotePost
 			#'photo':PhotoPost
 			#'conversation':ConversationPost
-			'audio':AudioPost
+			#'audio':AudioPost
+			'video':VideoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -199,6 +200,14 @@ class AudioPost(Post):
 		self.add_param('audio-caption','caption')
 		postid=self.postelement.get('id')
 		self.parameters['data']=open(glob.glob(self.options.backup_dir+'/audio/'+postid+'*')[0],'rb').read()
+
+class VideoPost(Post):
+	def __init__(self,postelement,options):
+		super(VideoPost,self).__init__(postelement,options)
+
+	def add_specific_parameters(self):
+		self.add_param('video-caption','caption')
+		self.add_param('video-source','embed')
 
 if __name__=="__main__":
 	parser=OptionParser()
