@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os, sys, re
+import os, sys, re, random
 import urllib, urllib2, cookielib
 import copy, Queue
 from threading import Thread
@@ -19,7 +19,7 @@ class BackupParser(object):
 			#'link':LinkPost
 			#,'regular':RegularPost
 			#,'quote':QuotePost
-			'photo':PhotoPost
+			#'photo':PhotoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -68,10 +68,11 @@ class Tumblog(object):
 			posts+=chunk
 			if len(chunk)<self.post_chunk:
 				break
+		print len(posts),'existing posts'
 		return posts
 			
 	def get_chunk_of_posts(self,start):
-		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read?num="+str(self.post_chunk)+"&start="+str(start))
+		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read?num="+str(self.post_chunk)+"&start="+str(start)+"&random="+str(int(random.random()*10000000000000000)))
 		existing_posts=etree.parse(existing_posts)
 		return [element.get('id') for element in existing_posts.xpath('posts/post')]
 
@@ -82,29 +83,30 @@ class Tumblog(object):
 		print "Deleteing",post_id
 
 	def worker(self,q,task):
-		while True:
+		while q._qsize()>0:
 			item=q.get()
 			task(item)
 			q.task_done()
 
-	def start_workers(self,q,task):
+	def do_parallel(self,q,task):
 		for i in range(self.options.num_threads):
 			thread=Thread(target=self.worker, args=(q,task))
 			thread.start()
+		q.join()
 	
 	def delete_all_posts(self):
 		q=Queue.Queue()
-		self.start_workers(q,self.delete_post)
 		for post_id in self.get_existing_posts():
 			q.put(post_id)
-		q.join()
+			print "Adding to delete queue",post_id
+		self.do_parallel(q,self.delete_post)
+		
 
 	def post_many(self,posts):
 		q=Queue.Queue()
-		self.start_workers(q,self.post)
 		for post in posts:
 			q.put(post)
-		q.join()
+		self.do_parallel(q,self.post)
 
 	def post(self,post):
 		post.add_specific_parameters()
@@ -113,7 +115,7 @@ class Tumblog(object):
 		opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cookies),
 				MultipartPostHandler.MultipartPostHandler)
 		result=opener.open(self.options.api_base+'/write',urllib.urlencode(post.parameters))
-		print result.getcode()
+		print "Post Creation Result",result.getcode()
 		for line in result:
 			print line
 
@@ -170,6 +172,7 @@ class PhotoPost(Post):
 		for photo_element in self.postelement.xpath('photo-url[@max-width="1280"]'):
 			self.photos.append(self.download_file(photo_element.text))
 		self.parameters['data']=self.photos[0]
+		
 
 class QuotePost(Post):
 	def __init__(self,postelement,options):
