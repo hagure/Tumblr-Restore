@@ -1,6 +1,11 @@
 This is a work-in-progress tumblr import script. 
 The aim is that it will be able to populate a new tumblr blog from a tumblr backup directory (created by the tumblr osx backup utility). 
 
+Requirements:
+LXML
+ - OSX: easy_install lxml
+ - Debian: apt-get install python-lxml
+
 Progress
 [x] Parse backup
 [x] Delete existing posts
