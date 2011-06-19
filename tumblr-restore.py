@@ -16,10 +16,10 @@ class BackupParser(object):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
 		self.posts_dir=options.backup_dir+"/posts"
 		self.post_types={
-			'link':LinkPost
-			,'regular':RegularPost
-			,'quote':QuotePost
-			#,'photo':PhotoPost
+			#'link':LinkPost
+			#,'regular':RegularPost
+			#,'quote':QuotePost
+			'photo':PhotoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -47,7 +47,7 @@ class BackupParser(object):
 			postelement=etree.fromstring(xml_string)
 			posttype=postelement.get('type')
 			if self.post_types.has_key(posttype):
-				posts.append(self.post_types[posttype](postelement))
+				posts.append(self.post_types[posttype](postelement,self.options))
 		tumblog.post_many(posts)
 
 class Tumblog(object):
@@ -119,8 +119,9 @@ class Tumblog(object):
 
 class Post(object):
 	"""Base Class for Post Creating Classes"""
-	def __init__(self,postelement):
+	def __init__(self,postelement,options):
 		self.postelement=postelement
+		self.options=options
 		self.parameters={	
 			'date':postelement.get('date')
 			,'format' : postelement.get('format')
@@ -134,19 +135,22 @@ class Post(object):
 		elements=self.postelement.xpath(xpath)
 		if len(elements)>0:
 			self.parameters[parameter]=elements[0].text.encode('utf-8')
+	
+	def download_file(self,url):
+		return urllib.urlopen(url).read()	
 
 	
 class RegularPost(Post):
-	def __init__(self,postelement):
-		super(RegularPost,self).__init__(postelement)
+	def __init__(self,postelement,options):
+		super(RegularPost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		self.add_param('regular-title','title')
 		self.add_param('regular-body','body')
 
 class LinkPost(Post):
-	def __init__(self,postelement):
-		super(LinkPost,self).__init__(postelement)
+	def __init__(self,postelement,options):
+		super(LinkPost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		self.add_param('link-text','name')
@@ -154,26 +158,30 @@ class LinkPost(Post):
 		self.add_param('link-description','description')
 
 class PhotoPost(Post):
-	def __init__(self,postelement):
-		super(PhotoPost,self).__init__(postelement)
+	def __init__(self,postelement,options):
+		super(PhotoPost,self).__init__(postelement,options)
+		self.photos=[]	
 
+	
 	def add_specific_parameters(self):
 		self.add_param('photo-caption','caption')
 		self.add_param('photo-link-url','click-through-url')
-		self.add_param('photo-source','source')
-		#source is not enough, have to upload image data :-(
+		#self.add_param('photo-source','source')
+		for photo_element in self.postelement.xpath('photo-url[@max-width="1280"]'):
+			self.photos.append(self.download_file(photo_element.text))
+		self.parameters['data']=self.photos[0]
 
 class QuotePost(Post):
-	def __init__(self,postelement):
-		super(QuotePost,self).__init__(postelement)
+	def __init__(self,postelement,options):
+		super(QuotePost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		self.add_param('quote-text','quote')
 		self.add_param('quote-source','source')
 
 class AudioPost(Post):
-	def __init__(self,postelement):
-		super(AudioPost,self).__init__(postelement)
+	def __init__(self,postelement,options):
+		super(AudioPost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
 		self.add_param('','externally-hosted-url')
