@@ -20,7 +20,8 @@ class BackupParser(object):
 			#,'regular':RegularPost
 			#'quote':QuotePost
 			#'photo':PhotoPost
-			'conversation':ConversationPost
+			#'conversation':ConversationPost
+			'audio':AudioPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -115,7 +116,9 @@ class Tumblog(object):
 		cookies=cookielib.CookieJar()
 		opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cookies),
 				MultipartPostHandler.MultipartPostHandler)
+		print "starting upload"
 		result=opener.open(self.options.api_base+'/write',(post.parameters))
+		print "upload done"
 		print "Post Creation Result",result.getcode()
 		for line in result:
 			print line
@@ -165,12 +168,11 @@ class PhotoPost(Post):
 		super(PhotoPost,self).__init__(postelement,options)
 		self.photos=[]	
 
-	
 	def add_specific_parameters(self):
 		self.add_param('photo-caption','caption')
 		self.add_param('photo-link-url','click-through-url')
 		postid=self.postelement.get('id')
-		self.parameters['data']=open(glob.glob(self.options.backup_dir+'/images/'+postid+'*')[0],'r').read()
+		self.parameters['data']=open(glob.glob(self.options.backup_dir+'/images/'+postid+'*')[0],'rb').read()
 		
 
 class QuotePost(Post):
@@ -194,8 +196,9 @@ class AudioPost(Post):
 		super(AudioPost,self).__init__(postelement,options)
 
 	def add_specific_parameters(self):
-		self.add_param('','externally-hosted-url')
 		self.add_param('audio-caption','caption')
+		postid=self.postelement.get('id')
+		self.parameters['data']=open(glob.glob(self.options.backup_dir+'/audio/'+postid+'*')[0],'rb').read()
 
 if __name__=="__main__":
 	parser=OptionParser()
