@@ -16,13 +16,13 @@ class BackupParser(object):
 			raise ValueError("Specified Backup Directory Doesn't Exist")
 		self.posts_dir=options.backup_dir+"/posts"
 		self.post_types={
-			#'link':LinkPost
-			#,'regular':RegularPost
-			#'quote':QuotePost
-			#'photo':PhotoPost
-			#'conversation':ConversationPost
-			#'audio':AudioPost
-			'video':VideoPost
+			'link':LinkPost
+			,'regular':RegularPost
+			,'quote':QuotePost
+			,'photo':PhotoPost
+			,'conversation':ConversationPost
+			,'audio':AudioPost
+			,'video':VideoPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -51,7 +51,7 @@ class BackupParser(object):
 			posttype=postelement.get('type')
 			if self.post_types.has_key(posttype):
 				posts.append(self.post_types[posttype](postelement,self.options))
-		tumblog.post_many(posts)
+		self.tumblog.post_many(posts)
 
 class Tumblog(object):
 	def __init__(self,options):
@@ -71,7 +71,7 @@ class Tumblog(object):
 			posts+=chunk
 			if len(chunk)<self.post_chunk:
 				break
-		print len(posts),'existing posts'
+		self.options.ui.message(str(len(posts))+' existing posts')
 		return posts
 			
 	def get_chunk_of_posts(self,start):
@@ -83,7 +83,7 @@ class Tumblog(object):
 		local_parameters=copy.copy(self.parameters)
 		local_parameters['post-id']=post_id
 		result = urllib.urlopen(self.options.api_base+'/delete',urllib.urlencode(local_parameters))
-		print "Deleteing",post_id
+		self.options.ui.message("Deleteing "+str(post_id))
 
 	def worker(self,q,task):
 		while q._qsize()>0:
@@ -101,7 +101,7 @@ class Tumblog(object):
 		q=Queue.Queue()
 		for post_id in self.get_existing_posts():
 			q.put(post_id)
-			print "Adding to delete queue",post_id
+			self.options.ui.message("Adding to delete queue "+str(post_id))
 		self.do_parallel(q,self.delete_post)
 		
 
@@ -117,12 +117,11 @@ class Tumblog(object):
 		cookies=cookielib.CookieJar()
 		opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cookies),
 				MultipartPostHandler.MultipartPostHandler)
-		print "starting upload"
+		self.options.ui.message("starting upload")
 		result=opener.open(self.options.api_base+'/write',(post.parameters))
-		print "upload done"
-		print "Post Creation Result",result.getcode()
-		for line in result:
-			print line
+		self.options.ui.message("upload done")
+		self.options.ui.message("Post Creation Result: "+str(result.getcode()))
+		return result.readline()
 
 class Post(object):
 	"""Base Class for Post Creating Classes"""
@@ -209,22 +208,48 @@ class VideoPost(Post):
 		self.add_param('video-caption','caption')
 		self.add_param('video-source','embed')
 
-if __name__=="__main__":
-	parser=OptionParser()
-	parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
-	parser.add_option("-p","--password",dest="password",help="Tumblr password")
-	parser.add_option("-e","--email",dest="email",help="Tumblr email")
-	parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on.",metavar="foo.tumblr.com")
-	parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
-	parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
-	parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/delete simultaneously. Default=5, 10 causes API rate limit errors for me.",default=5)
-	options,args=parser.parse_args()
-	if not (options.password and options.email and options.backup_dir and options.tumblog):
-		parser.print_help()
-		sys.exit(1)
-	tumblog=Tumblog(options)
-	if options.delete: 
-		tumblog.delete_all_posts()
-	bp=BackupParser(options,tumblog)
-	bp.parse()
+class UI(object):
+	"""Base class for UIs"""
 
+	def __init__(self):
+		pass
+
+	def start(self):
+		self.options=self.get_options()
+		self.options.ui=self
+		tumblog=Tumblog(self.options)
+		if self.options.delete: 
+			tumblog.delete_all_posts()
+		bp=BackupParser(self.options,tumblog)
+		bp.parse()
+	
+	def get_options(self):
+		pass	
+
+	def message(self,message):
+		pass
+
+class CLI(UI):
+	"""Command Line Interface"""
+	def get_options(self):
+		parser=OptionParser()
+		parser.add_option("-b","--backupdir",dest="backup_dir",help="Path to directory which contains your tumblr backup. Should include index.html and a 'posts' subdirectory",metavar="DIR")
+		parser.add_option("-p","--password",dest="password",help="Tumblr password")
+		parser.add_option("-e","--email",dest="email",help="Tumblr email")
+		parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on.",metavar="foo.tumblr.com")
+		parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
+		parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
+		parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/delete simultaneously. Default=5, 10 causes API rate limit errors for me.",default=5)
+		options,args=parser.parse_args()
+		if not (options.password and options.email and options.backup_dir and options.tumblog):
+			parser.print_help()
+			sys.exit(1)
+		return options
+	
+	def message(self,message):
+		print message
+	
+
+if __name__=="__main__":
+	cli=CLI()
+	cli.start()
