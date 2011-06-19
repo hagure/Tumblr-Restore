@@ -19,7 +19,8 @@ class BackupParser(object):
 			#'link':LinkPost
 			#,'regular':RegularPost
 			#'quote':QuotePost
-			'photo':PhotoPost
+			#'photo':PhotoPost
+			'conversation':ConversationPost
 		}
 
 	def extract_xml_string(self,filename):
@@ -179,6 +180,14 @@ class QuotePost(Post):
 	def add_specific_parameters(self):
 		self.add_param('quote-text','quote')
 		self.add_param('quote-source','source')
+
+class ConversationPost(Post):
+	def __init__(self,postelement,options):
+		super(ConversationPost,self).__init__(postelement,options)
+
+	def add_specific_parameters(self):
+		self.add_param('conversation-title','title')
+		self.add_param('conversation-text','conversation')
 
 class AudioPost(Post):
 	def __init__(self,postelement,options):
