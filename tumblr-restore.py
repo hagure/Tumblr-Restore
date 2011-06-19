@@ -92,16 +92,17 @@ class Tumblog(object):
 			q.task_done()
 
 	def do_parallel(self,q,task):
+		self.options.ui.message("Starting parallel task: "+str(task)+" "+str(q._qsize())+" items")
 		for i in range(self.options.num_threads):
 			thread=Thread(target=self.worker, args=(q,task))
 			thread.start()
 		q.join()
+		self.options.ui.message("Parallel Task Complete")
 	
 	def delete_all_posts(self):
 		q=Queue.Queue()
 		for post_id in self.get_existing_posts():
 			q.put(post_id)
-			self.options.ui.message("Adding to delete queue "+str(post_id))
 		self.do_parallel(q,self.delete_post)
 		
 
@@ -120,8 +121,7 @@ class Tumblog(object):
 		self.options.ui.message("starting upload")
 		result=opener.open(self.options.api_base+'/write',(post.parameters))
 		self.options.ui.message("upload done")
-		self.options.ui.message("Post Creation Result: "+str(result.getcode()))
-		return result.readline()
+		self.options.ui.message("Post Creation Result: "+str(result.getcode())+' new post id: '+result.readline())
 
 class Post(object):
 	"""Base Class for Post Creating Classes"""
@@ -215,6 +215,7 @@ class UI(object):
 		pass
 
 	def start(self):
+		self.message("Tumblr Restore")
 		self.options=self.get_options()
 		self.options.ui=self
 		tumblog=Tumblog(self.options)
@@ -222,6 +223,7 @@ class UI(object):
 			tumblog.delete_all_posts()
 		bp=BackupParser(self.options,tumblog)
 		bp.parse()
+		self.message("Tumblr Restore Complete")
 	
 	def get_options(self):
 		pass	
