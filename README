@@ -7,7 +7,11 @@ Progress
 [x] Create regular posts
 [x] Create link posts
 [x] Create quote posts
-[-] Create photo posts
-[ ] Create conversation posts
-[ ] Create video posts
-[ ] Create audio posts
+[x] Create photo posts
+[x] Create conversation posts
+[x] Create video posts
+[x] Create audio posts
+
+Known Issues
+- Photosets Dont work: https://github.com/hughsaunders/Tumblr-Restore/issues/1
+- Pages Don't work: https://github.com/hughsaunders/Tumblr-Restore/issues/15
