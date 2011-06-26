@@ -1,0 +1,22 @@
+This is a work-in-progress tumblr import script. 
+The aim is that it will be able to populate a new tumblr blog from a tumblr backup directory (created by the tumblr osx backup utility). 
+
+Requirements:
+LXML
+ - OSX: easy_install lxml
+ - Debian: apt-get install python-lxml
+
+Progress
+[x] Parse backup
+[x] Delete existing posts
+[x] Create regular posts
+[x] Create link posts
+[x] Create quote posts
+[x] Create photo posts
+[x] Create conversation posts
+[x] Create video posts
+[x] Create audio posts
+
+Known Issues
+- Photosets Dont work: https://github.com/hughsaunders/Tumblr-Restore/issues/1
+- Pages Don't work: https://github.com/hughsaunders/Tumblr-Restore/issues/15

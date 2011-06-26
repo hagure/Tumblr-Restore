@@ -1,0 +1,150 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CE010B5713AF2950005AB2FA /* TumblrRestoreXcode */;
+		activeTarget = 8D1107260486CEB800E47090 /* TumblrRestoreXcode */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* TumblrRestoreXcode */,
+		);
+		codeSenseManager = CE010B6513AF296F005AB2FA /* Code sense */;
+		executables = (
+			CE010B5713AF2950005AB2FA /* TumblrRestoreXcode */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					524,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 330780256;
+			PBXWorkspaceStateSaveDate = 330780256;
+		};
+		perUserProjectItems = {
+			CE010B7E13B3F0F3005AB2FA = CE010B7E13B3F0F3005AB2FA /* PBXTextBookmark */;
+			CE010B7F13B3F0F3005AB2FA = CE010B7F13B3F0F3005AB2FA /* PBXTextBookmark */;
+			CE010B8013B3F0F3005AB2FA = CE010B8013B3F0F3005AB2FA /* PBXTextBookmark */;
+		};
+		sourceControlManager = CE010B6413AF296F005AB2FA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	77631A3E0C0748CF005415CB /* main.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {702, 315}}";
+			sepNavSelRange = "{426, 0}";
+			sepNavVisRange = "{0, 478}";
+		};
+	};
+	7790198E0C07548A00326F66 /* TumblrRestoreXcodeAppDelegate.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {702, 315}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 365}";
+		};
+	};
+	8D1107260486CEB800E47090 /* TumblrRestoreXcode */ = {
+		activeExec = 0;
+		executables = (
+			CE010B5713AF2950005AB2FA /* TumblrRestoreXcode */,
+		);
+	};
+	CE010B5713AF2950005AB2FA /* TumblrRestoreXcode */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = TumblrRestoreXcode;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	CE010B6413AF296F005AB2FA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CE010B6513AF296F005AB2FA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CE010B6B13B26BE0005AB2FA /* controller.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {702, 507}}";
+			sepNavSelRange = "{241, 0}";
+			sepNavVisRange = "{0, 610}";
+		};
+	};
+	CE010B7E13B3F0F3005AB2FA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77631A3E0C0748CF005415CB /* main.py */;
+		name = "main.py: 22";
+		rLen = 0;
+		rLoc = 478;
+		rType = 0;
+		vrLen = 420;
+		vrLoc = 35;
+	};
+	CE010B7F13B3F0F3005AB2FA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE010B6B13B26BE0005AB2FA /* controller.py */;
+		name = "controller.py: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 290;
+		vrLoc = 0;
+	};
+	CE010B8013B3F0F3005AB2FA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE010B6B13B26BE0005AB2FA /* controller.py */;
+		name = "controller.py: 20";
+		rLen = 0;
+		rLoc = 830;
+		rType = 0;
+		vrLen = 436;
+		vrLoc = 0;
+	};
+}

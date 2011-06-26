@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'TumblrRestoreXcode' target in the 'TumblrRestoreXcode' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

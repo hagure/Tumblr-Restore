@@ -1,0 +1,344 @@
+TTumblrRestoreXcode
+v7
+r0
+t330784473.701055
+cCheck dependencies
+cProcessInfoPlistFile /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Info.plist Info.plist
+cCopyStringsFile /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/main.py main.py
+cCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/TumblrRestoreXcodeAppDelegate.py TumblrRestoreXcodeAppDelegate.py
+cCompileXIB /Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib
+cCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/controller.py controller.py
+cCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/tumblrRestore tumblrRestore
+cProcessPCH /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch.gch TumblrRestoreXcode_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch.gch TumblrRestoreXcode_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_2
+cCompileC build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/main.o /Users/hms/Hugh/TumblrRestoreXcode/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode normal i386
+cCompileC build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/main.o /Users/hms/Hugh/TumblrRestoreXcode/main.m normal ppc objective-c com.apple.compilers.gcc.4_2
+cLd /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode normal ppc
+cCreateUniversalBinary /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode normal "i386 ppc"
+cTouch /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app
+
+N/Developer/SDKs/MacOSX10.5.sdk
+c000000004C238B9B00000000000000EE
+t1277397915
+s238
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Python.framework/Headers/Python.h
+c000000004864C5EF000000000000106C
+t1214563823
+s4204
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004CF9722E000000000000A5E0
+t1291416110
+s42464
+
+N/System/Library/Frameworks/Python.framework/Python
+c000000004C2437DE00000000003E7770
+t1277442014
+s4093808
+
+N/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/InfoPlist.strings
+c000000004DFEF1D000000000000000CA
+t1308553680
+s202
+
+N/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib
+c000000004E0722740000000000030405
+t1309090420
+s197637
+
+N/Users/hms/Hugh/TumblrRestoreXcode/Tumblr-Restore
+c000000004E03B97C0000000000000132
+t1308866940
+s306
+
+N/Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcodeAppDelegate.py
+c000000004DFEF1D0000000000000016D
+t1308553680
+s365
+
+N/Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcode_Prefix.pch
+c000000004DFEF1D000000000000000A7
+t1308553680
+s167
+i<Cocoa/Cocoa.h>
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app
+t1309091673
+s102
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Info.plist
+t1308768458
+s863
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode
+t1308768464
+s42096
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/PkgInfo
+t1308768458
+s8
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1308768458
+s202
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/MainMenu.nib
+t1309090424
+s37632
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/Tumblr-Restore
+t1309091427
+s272
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/TumblrRestoreXcodeAppDelegate.py
+t1308768458
+s365
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/controller.py
+t1309091242
+s932
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/main.py
+t1309091673
+s477
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/tumblrRestore
+t1309091673
+s340
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode
+t1308768464
+s18036
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode.LinkFileList
+c000000004E0238CA000000000000007C
+t1308768458
+s124
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/main.o
+t1308768463
+s10772
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode
+t1308768464
+s17520
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode.LinkFileList
+c000000004E0238CA000000000000007B
+t1308768458
+s123
+
+N/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/main.o
+t1308768463
+s11568
+
+N/Users/hms/Hugh/TumblrRestoreXcode/controller.py
+c000000004E0725A900000000000003A4
+t1309091241
+s932
+
+N/Users/hms/Hugh/TumblrRestoreXcode/main.m
+c000000004DFEF1D00000000000000724
+t1308553680
+s1828
+i<Python/Python.h>
+i<Cocoa/Cocoa.h>
+
+N/Users/hms/Hugh/TumblrRestoreXcode/main.py
+c000000004E07275500000000000001DD
+t1309091669
+s477
+
+N/Users/hms/Hugh/TumblrRestoreXcode/tumblrRestore
+c000000004E0727300000000000000176
+t1309091632
+s374
+
+N/var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch.gch
+t1308768463
+s50315472
+
+N/var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch.gch
+t1308768463
+s54002064
+
+NInfo.plist
+c000000004DFEF1D00000000000000394
+t1308553680
+s916
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies330784473#330784473#0(0"0(0#1#0"8615559520#0"0#
+
+CCompileC build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/main.o /Users/hms/Hugh/TumblrRestoreXcode/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s330461263.581705
+e330461263.896038
+r1
+xCompileC
+xbuild/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/main.o
+x/Users/hms/Hugh/TumblrRestoreXcode/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@49"Compile /Users/hms/Hugh/TumblrRestoreXcode/main.m330461263#330461263#0(0"0(0#0#41"/Users/hms/Hugh/TumblrRestoreXcode/main.m8624028640#1158"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/TumblrRestoreXcode.hmap -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -I/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/include -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources/i386 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources -include /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch -c /Users/hms/Hugh/TumblrRestoreXcode/main.m -o /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/main.o0#
+
+CCompileC build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/main.o /Users/hms/Hugh/TumblrRestoreXcode/main.m normal ppc objective-c com.apple.compilers.gcc.4_2
+s330461263.582448
+e330461263.895251
+r1
+xCompileC
+xbuild/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/main.o
+x/Users/hms/Hugh/TumblrRestoreXcode/main.m
+xnormal
+xppc
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@49"Compile /Users/hms/Hugh/TumblrRestoreXcode/main.m330461263#330461263#0(0"0(0#0#41"/Users/hms/Hugh/TumblrRestoreXcode/main.m8612807904#1165"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mtune=G5 -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/TumblrRestoreXcode.hmap -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -I/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/include -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources/ppc -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources -include /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch -c /Users/hms/Hugh/TumblrRestoreXcode/main.m -o /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/main.o0#
+
+CCompileXIB /Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib
+s330783223.973540
+e330783224.215196
+r1
+xCompileXIB
+x/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib
+o/* com.apple.ibtool.document.warnings */
+o/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib:480: warning: The property "Uses Single Line Mode" is not supported on Mac OS X versions prior to 10.6.
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib330783223#330783224#0(207"/* com.apple.ibtool.document.warnings *//Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib:480: warning: The property "Uses Single Line Mode" is not supported on Mac OS X versions prior to 10.6.1(22@89"The property "Uses Single Line Mode" is not supported on Mac OS X versions prior to 10.6.330783224#18446744073709551615#0#0(6@61"/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib330783220#480#0#480#0#0"0(0#0#61"/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib8617147584#363"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/MainMenu.nib /Users/hms/Hugh/TumblrRestoreXcode/English.lproj/MainMenu.xib --sdk /Developer/SDKs/MacOSX10.5.sdk0#
+
+CCopyStringsFile /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s330461258.174376
+e330461258.523289
+r1
+xCopyStringsFile
+x/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings330461258#330461258#0(0"0(0#0#66"/Users/hms/Hugh/TumblrRestoreXcode/English.lproj/InfoPlist.strings8626347264#369"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources/English.lproj0#
+
+CCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/Tumblr-Restore Tumblr-Restore
+s330784227.278860
+e330784227.334400
+r1
+xCpResource
+xbuild/Debug/TumblrRestoreXcode.app/Contents/Resources/Tumblr-Restore
+xTumblr-Restore
+lSLF07#2@19"Copy Tumblr-Restore330784227#330784227#0(0"0(0#0#49"/Users/hms/Hugh/TumblrRestoreXcode/Tumblr-Restore8616406272#343"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/hms/Hugh/TumblrRestoreXcode/Tumblr-Restore /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources0#
+
+CCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/TumblrRestoreXcodeAppDelegate.py TumblrRestoreXcodeAppDelegate.py
+s330461258.177143
+e330461258.193960
+r1
+xCpResource
+xbuild/Debug/TumblrRestoreXcode.app/Contents/Resources/TumblrRestoreXcodeAppDelegate.py
+xTumblrRestoreXcodeAppDelegate.py
+lSLF07#2@37"Copy TumblrRestoreXcodeAppDelegate.py330461258#330461258#0(0"0(0#0#67"/Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcodeAppDelegate.py8626158784#361"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcodeAppDelegate.py /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources0#
+
+CCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/controller.py controller.py
+s330784042.792318
+e330784042.795695
+r1
+xCpResource
+xbuild/Debug/TumblrRestoreXcode.app/Contents/Resources/controller.py
+xcontroller.py
+lSLF07#2@18"Copy controller.py330784042#330784042#0(0"0(0#0#48"/Users/hms/Hugh/TumblrRestoreXcode/controller.py8615916640#342"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/hms/Hugh/TumblrRestoreXcode/controller.py /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources0#
+
+CCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/main.py main.py
+s330784473.612460
+e330784473.615859
+r1
+xCpResource
+xbuild/Debug/TumblrRestoreXcode.app/Contents/Resources/main.py
+xmain.py
+lSLF07#2@12"Copy main.py330784473#330784473#0(0"0(0#0#42"/Users/hms/Hugh/TumblrRestoreXcode/main.py8602679008#336"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/hms/Hugh/TumblrRestoreXcode/main.py /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources0#
+
+CCpResource build/Debug/TumblrRestoreXcode.app/Contents/Resources/tumblrRestore tumblrRestore
+s330784473.613017
+e330784473.698242
+r1
+xCpResource
+xbuild/Debug/TumblrRestoreXcode.app/Contents/Resources/tumblrRestore
+xtumblrRestore
+lSLF07#2@18"Copy tumblrRestore330784473#330784473#0(0"0(0#0#48"/Users/hms/Hugh/TumblrRestoreXcode/tumblrRestore8615267520#342"    cd /Users/hms/Hugh/TumblrRestoreXcode    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/hms/Hugh/TumblrRestoreXcode/tumblrRestore /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Resources0#
+
+CCreateUniversalBinary /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode normal "i386 ppc"
+s330461264.413317
+e330461264.445375
+r1
+xCreateUniversalBinary
+x/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode
+xnormal
+xi386 ppc
+lSLF07#2@108"CreateUniversalBinary build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode normal "i386 ppc"330461264#330461264#0(0"0(0#0#43"/Users/hms/Hugh/TumblrRestoreXcode/i386 ppc8615238240#451"    cd /Users/hms/Hugh/TumblrRestoreXcode    /usr/bin/lipo -create /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode -output /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/MacOS/TumblrRestoreXcode0#
+
+CLd /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode normal i386
+s330461263.896106
+e330461264.413259
+r1
+xLd
+x/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode
+xnormal
+xi386
+lSLF07#2@140"Link /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode330461263#330461264#0(0"0(0#0#0"8615599872#623"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -filelist /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode.LinkFileList -mmacosx-version-min=10.5 -framework Cocoa -framework Python -o /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/i386/TumblrRestoreXcode0#
+
+CLd /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode normal ppc
+s330461263.895316
+e330461264.413037
+r1
+xLd
+x/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode
+xnormal
+xppc
+lSLF07#2@139"Link /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode330461263#330461264#0(0"0(0#0#0"8623651616#620"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch ppc -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -filelist /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode.LinkFileList -mmacosx-version-min=10.5 -framework Cocoa -framework Python -o /Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/Objects-normal/ppc/TumblrRestoreXcode0#
+
+CProcessInfoPlistFile /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Info.plist Info.plist
+s330461258.095767
+e330461258.174310
+r1
+xProcessInfoPlistFile
+x/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Info.plist
+xInfo.plist
+lSLF07#2@18"Process Info.plist330461258#330461258#0(0"0(0#0#45"/Users/hms/Hugh/TumblrRestoreXcode/Info.plist31244147622412388#312"    cd /Users/hms/Hugh/TumblrRestoreXcode    builtin-infoPlistUtility Info.plist -genpkginfo /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch.gch TumblrRestoreXcode_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_2
+s330461258.524005
+e330461263.278343
+r1
+xProcessPCH
+x/var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch.gch
+xTumblrRestoreXcode_Prefix.pch
+xnormal
+xppc
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@40"Precompile TumblrRestoreXcode_Prefix.pch330461258#330461263#0(0"0(0#0#64"/Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcode_Prefix.pch8626110304#1067"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mtune=G5 -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/TumblrRestoreXcode.hmap -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -I/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/include -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources/ppc -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources -c /Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcode_Prefix.pch -o /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-czddpyvgiqzwqddiummfwetbwyzf/TumblrRestoreXcode_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch.gch TumblrRestoreXcode_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s330461258.523409
+e330461263.581634
+r1
+xProcessPCH
+x/var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch.gch
+xTumblrRestoreXcode_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@40"Precompile TumblrRestoreXcode_Prefix.pch330461258#330461263#0(0"0(0#0#64"/Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcode_Prefix.pch8625677248#1059"    cd /Users/hms/Hugh/TumblrRestoreXcode    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/TumblrRestoreXcode.hmap -F/Users/hms/Hugh/TumblrRestoreXcode/build/Debug -I/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/include -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources/i386 -I/Users/hms/Hugh/TumblrRestoreXcode/build/TumblrRestoreXcode.build/Debug/TumblrRestoreXcode.build/DerivedSources -c /Users/hms/Hugh/TumblrRestoreXcode/TumblrRestoreXcode_Prefix.pch -o /var/folders/Zq/Zqqvk-CEGga2tAme2fxMHE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TumblrRestoreXcode_Prefix-daooxmootqrhnmgwjqnndgrfvbhi/TumblrRestoreXcode_Prefix.pch.gch0#
+
+CTouch /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app
+s330784473.698727
+e330784473.700945
+r1
+xTouch
+x/Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app
+lSLF07#2@75"Touch /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app330784473#330784473#0(0"0(0#0#0"8617578912#134"    cd /Users/hms/Hugh/TumblrRestoreXcode    /usr/bin/touch -c /Users/hms/Hugh/TumblrRestoreXcode/build/Debug/TumblrRestoreXcode.app0#
+
