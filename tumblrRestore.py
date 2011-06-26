@@ -5,7 +5,8 @@ import urllib, urllib2, cookielib
 import copy, Queue
 from threading import Thread
 from optparse import OptionParser
-from lxml import etree
+from xml import etree
+from xml.etree import ElementTree
 from lib import MultipartPostHandler
 
 class BackupParser(object):
@@ -47,7 +48,7 @@ class BackupParser(object):
 		posts=[]
 		for filename in os.listdir(self.posts_dir):
 			xml_string=self.extract_xml_string(self.posts_dir+"/"+filename)
-			postelement=etree.fromstring(xml_string)
+			postelement=ElementTree.fromstring(xml_string)
 			posttype=postelement.get('type')
 			if self.post_types.has_key(posttype):
 				posts.append(self.post_types[posttype](postelement,self.options))
@@ -77,7 +78,7 @@ class Tumblog(object):
 	def get_chunk_of_posts(self,start):
 		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read?num="+str(self.post_chunk)+"&start="+str(start)+"&random="+str(int(random.random()*10000000000000000)))
 		existing_posts=etree.parse(existing_posts)
-		return [element.get('id') for element in existing_posts.xpath('posts/post')]
+		return [element.get('id') for element in existing_posts.find('posts/post')]
 
 	def delete_post(self,post_id):
 		local_parameters=copy.copy(self.parameters)
@@ -132,13 +133,13 @@ class Post(object):
 			'date':postelement.get('date')
 			,'format' : postelement.get('format')
 			,'slug' : postelement.get('slug')
-			,'tags' : ",".join([tag.text for tag in postelement.xpath('tag')])
+			,'tags' : ",".join([tag.text for tag in postelement.find('tag')])
 			,'type' :  postelement.get('type')
 			,'send-to-twitter' : 'no'
 		}
 
 	def add_param(self,xpath,parameter):
-		elements=self.postelement.xpath(xpath)
+		elements=self.postelement.find(xpath)
 		if len(elements)>0:
 			self.parameters[parameter]=elements[0].text.encode('utf-8')
 	
