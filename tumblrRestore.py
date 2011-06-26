@@ -65,6 +65,12 @@ class Tumblog(object):
 		}
 		self.post_chunk=50
 	
+	def get_user_tumblogs(self):
+		response=urllib.open(self.options.api_base+'/authenticate',self.parameters)
+		tumblrelement=ElementTree.parse(response.read())
+		tumblelogs=tumblrelement.xpath('tumblelog')
+		return [t.get(url) for t in tumblelogs]
+
 	def get_existing_posts(self):
 		posts=[]
 		while True:
