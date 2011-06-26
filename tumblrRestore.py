@@ -77,8 +77,8 @@ class Tumblog(object):
 			
 	def get_chunk_of_posts(self,start):
 		existing_posts=urllib.urlopen("http://"+self.options.tumblog+"/api/read?num="+str(self.post_chunk)+"&start="+str(start)+"&random="+str(int(random.random()*10000000000000000)))
-		existing_posts=etree.parse(existing_posts)
-		return [element.get('id') for element in existing_posts.find('posts/post')]
+		existing_posts=ElementTree.parse(existing_posts)
+		return [element.get('id') for element in existing_posts.findall('posts/post')]
 
 	def delete_post(self,post_id):
 		local_parameters=copy.copy(self.parameters)
@@ -133,13 +133,13 @@ class Post(object):
 			'date':postelement.get('date')
 			,'format' : postelement.get('format')
 			,'slug' : postelement.get('slug')
-			,'tags' : ",".join([tag.text for tag in postelement.find('tag')])
+			,'tags' : ",".join([tag.text for tag in postelement.findall('tag')])
 			,'type' :  postelement.get('type')
 			,'send-to-twitter' : 'no'
 		}
 
 	def add_param(self,xpath,parameter):
-		elements=self.postelement.find(xpath)
+		elements=self.postelement.findall(xpath)
 		if len(elements)>0:
 			self.parameters[parameter]=elements[0].text.encode('utf-8')
 	
