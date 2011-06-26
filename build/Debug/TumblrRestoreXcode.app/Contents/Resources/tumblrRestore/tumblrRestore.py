@@ -63,6 +63,9 @@ class Tumblog(object):
 			,'group':options.tumblog
 		}
 		self.post_chunk=50
+		
+	def get_user_tumblogs(self):
+		urllib.open(self.options.api_base+'/authenticate',self.parameters)
 	
 	def get_existing_posts(self):
 		posts=[]

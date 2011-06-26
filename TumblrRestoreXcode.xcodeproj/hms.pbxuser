@@ -48,9 +48,9 @@
 	};
 	77631A3E0C0748CF005415CB /* main.py */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {702, 315}}";
-			sepNavSelRange = "{426, 0}";
-			sepNavVisRange = "{0, 478}";
+			sepNavIntBoundsRect = "{{0, 0}, {719, 1166}}";
+			sepNavSelRange = "{419, 0}";
+			sepNavVisRange = "{0, 477}";
 		};
 	};
 	7790198E0C07548A00326F66 /* TumblrRestoreXcodeAppDelegate.py */ = {
@@ -112,9 +112,9 @@
 	};
 	CE010B6B13B26BE0005AB2FA /* controller.py */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {702, 507}}";
-			sepNavSelRange = "{241, 0}";
-			sepNavVisRange = "{0, 610}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 741}}";
+			sepNavSelRange = "{313, 0}";
+			sepNavVisRange = "{0, 614}";
 		};
 	};
 	CE010B7E13B3F0F3005AB2FA /* PBXTextBookmark */ = {
@@ -122,7 +122,7 @@
 		fRef = 77631A3E0C0748CF005415CB /* main.py */;
 		name = "main.py: 22";
 		rLen = 0;
-		rLoc = 478;
+		rLoc = 477;
 		rType = 0;
 		vrLen = 420;
 		vrLoc = 35;
@@ -142,7 +142,7 @@
 		fRef = CE010B6B13B26BE0005AB2FA /* controller.py */;
 		name = "controller.py: 20";
 		rLen = 0;
-		rLoc = 830;
+		rLoc = 1120;
 		rType = 0;
 		vrLen = 436;
 		vrLoc = 0;

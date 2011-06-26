@@ -16,6 +16,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CE010B6C13B26BE0005AB2FA /* controller.py in Resources */ = {isa = PBXBuildFile; fileRef = CE010B6B13B26BE0005AB2FA /* controller.py */; };
 		CE31144A13B75ECC0011196D /* tumblrRestore in Resources */ = {isa = PBXBuildFile; fileRef = CE3110EE13B75ECC0011196D /* tumblrRestore */; };
+		CE3114DB13B770320011196D /* lxml in Resources */ = {isa = PBXBuildFile; fileRef = CE31148E13B770320011196D /* lxml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8D1107320486CEB800E47090 /* TumblrRestoreXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TumblrRestoreXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE010B6B13B26BE0005AB2FA /* controller.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = controller.py; sourceTree = "<group>"; };
 		CE3110EE13B75ECC0011196D /* tumblrRestore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tumblrRestore; sourceTree = "<group>"; };
+		CE31148E13B770320011196D /* lxml */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lxml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				CE010B6B13B26BE0005AB2FA /* controller.py */,
+				CE31148E13B770320011196D /* lxml */,
 				CE3110EE13B75ECC0011196D /* tumblrRestore */,
 				7790198E0C07548A00326F66 /* TumblrRestoreXcodeAppDelegate.py */,
 			);
@@ -183,6 +186,7 @@
 				77C8C1F90C07829500965286 /* MainMenu.xib in Resources */,
 				CE010B6C13B26BE0005AB2FA /* controller.py in Resources */,
 				CE31144A13B75ECC0011196D /* tumblrRestore in Resources */,
+				CE3114DB13B770320011196D /* lxml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
