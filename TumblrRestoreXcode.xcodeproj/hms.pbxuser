@@ -17,9 +17,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					524,
+					529,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -32,6 +32,28 @@
 					PBXFileDataSource_Errors_ColumnID,
 					PBXFileDataSource_Warnings_ColumnID,
 					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					489,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
 			PBXPerProjectTemplateStateSaveDate = 330780256;
@@ -113,8 +135,8 @@
 	CE010B6B13B26BE0005AB2FA /* controller.py */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {691, 741}}";
-			sepNavSelRange = "{313, 0}";
-			sepNavVisRange = "{0, 614}";
+			sepNavSelRange = "{312, 0}";
+			sepNavVisRange = "{0, 613}";
 		};
 	};
 	CE010B7E13B3F0F3005AB2FA /* PBXTextBookmark */ = {
@@ -142,7 +164,7 @@
 		fRef = CE010B6B13B26BE0005AB2FA /* controller.py */;
 		name = "controller.py: 20";
 		rLen = 0;
-		rLoc = 1120;
+		rLoc = 1119;
 		rType = 0;
 		vrLen = 436;
 		vrLoc = 0;
