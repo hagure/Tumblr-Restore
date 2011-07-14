@@ -100,7 +100,7 @@ class Tumblog(object):
 
 	def do_parallel(self,q,task):
 		self.options.ui.message("Starting parallel task: "+str(task)+" "+str(q._qsize())+" items")
-		for i in range(self.options.num_threads):
+		for i in range(int(self.options.num_threads)):
 			thread=Thread(target=self.worker, args=(q,task))
 			thread.start()
 		q.join()
@@ -248,7 +248,7 @@ class CLI(UI):
 		parser.add_option("-t","--tumblog",dest="tumblog",help="Tumblog to act on.",metavar="foo.tumblr.com")
 		parser.add_option("-d","--delete",dest="delete",action="store_true",help="clear existing posts before uploading")
 		parser.add_option("-a","--api",dest="api_base",help="Base of Api url (default=http://www.tumblr.com/api)",default="http://www.tumblr.com/api")
-		parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/delete simultaneously. Default=5, 10 causes API rate limit errors for me.",default=5)
+		parser.add_option("-n","--numthreads",dest="num_threads",help="Number of items to upload/delete simultaneously. Default=5, 10 causes API rate limit errors for me.",default="5")
 		options,args=parser.parse_args()
 		if not (options.password and options.email and options.backup_dir and options.tumblog):
 			parser.print_help()
